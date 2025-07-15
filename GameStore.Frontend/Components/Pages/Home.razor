@@ -1,4 +1,6 @@
 ﻿@page "/"
+@inject GamesClient Client
+
 @* @using GameStore.Frontend.Clients
 @using GameStore.Frontend.Models *@
 
@@ -8,6 +10,10 @@
 <!-- <h1>Hello, world!</h1>
 
 Welcome to your new app. -->
+
+<div class="mt-2">
+    <a class="btn btn-primary" role="button" href="/editgame">New Game</a>
+</div>
 
 @if (games is null) 
 { 
@@ -46,15 +52,14 @@ else
 }
 
 @code {
-
-    private GamesClient client = new();
+    @* private GamesClient client = new(); *@
 
     private GameSummary[]? games;
 
     protected override void OnInitialized()
     {
-        games = client.GetGames();
+        @* games = client.GetGames(); *@
+        games = Client.GetGames();
     }
-
 
 }
