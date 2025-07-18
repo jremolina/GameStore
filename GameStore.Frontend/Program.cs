@@ -2,14 +2,19 @@
 
 using GameStore.Frontend.Clients;
 using GameStore.Frontend.Components;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
 
+// add mudblazor services
+builder.Services.AddMudServices();
+
 //registro de dependiencias
 builder.Services.AddSingleton<GamesClient>();
+builder.Services.AddSingleton<GenresClient>();
 
 var app = builder.Build();
 
